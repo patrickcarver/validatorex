@@ -3,16 +3,8 @@ defmodule Validatorex do
   Documentation for Validatorex.
   """
 
-  @doc """
-  Hello world.
+  # Validatorex.only_english_letters(value)
 
-  ## Examples
+  # Validatorex.value_is_in_list(value, list)
 
-      iex> Validatorex.hello
-      :world
-
-  """
-  def hello do
-    :world
-  end
 end
