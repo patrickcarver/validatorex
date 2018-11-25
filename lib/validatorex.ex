@@ -34,7 +34,6 @@ defmodule Validatorex do
   Checks if value is within list
   """
   def value_in_list(value, list) do
-    IO.inspect list
     case value in list do
       true -> { :ok, value }
       false -> { :error, "value is not in the list" }
