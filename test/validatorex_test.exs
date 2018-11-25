@@ -7,7 +7,7 @@ defmodule ValidatorexTest do
   end
 
   test "1 is not a string" do
-    assert { :error, "value is not a string" } = Validatorex.only_english_letters(1)
+    assert { :error, "value must be a string" } = Validatorex.only_english_letters(1)
   end
 
   test "\"thi1ng!3\" does not contain only English alphabetic characters" do
@@ -15,13 +15,13 @@ defmodule ValidatorexTest do
       Validatorex.only_english_letters("th1ng!3")
   end
 
-  test "\"adverb\" is in the list ~w[adverb, adjective, noun, verb]" do
-    list = ~w[adverb, adjective, noun, verb]
-    assert { :ok, "adverb" } = Validatorex.is_in_list("adverb", list)
+  test "\"adverb\" is in the list ~w[adverb adjective noun verb]" do
+    list = ~w[adverb adjective noun verb]
+    assert { :ok, "adverb" } = Validatorex.value_in_list("adverb", list)
   end
 
-  test "\"conjunction\" is not in the list ~w[adverb, adjective, noun, verb]" do
-    list = ~w[adverb, adjective, noun, verb]
-    assert { :error, "value is not in the list" } = Validatorex.is_in_list("adverb", list)
+  test "\"conjunction\" is not in the list ~w[adverb adjective noun verb]" do
+    list = ~w[adverb adjective noun verb]
+    assert { :error, "value is not in the list" } = Validatorex.value_in_list("conjunction", list)
   end  
 end

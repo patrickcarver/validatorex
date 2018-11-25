@@ -1,10 +1,43 @@
 defmodule Validatorex do
   @moduledoc """
-  Documentation for Validatorex.
+  Provides functions to check if submitted values are valid.
   """
 
-  # Validatorex.only_english_letters(value)
+  @doc """
+  Checks if value is a string and contains only English letters
+  """
+  def only_english_letters(value) do
+    value
+    |> is_string()
+    |> is_all_english_letters()    
+  end
 
-  # Validatorex.value_is_in_list(value, list)
+  defp is_string(value) do
+    case is_binary(value) do
+      true -> { :ok, value }
+      false -> { :error, "value must be a string" }
+    end       
+  end
 
+  defp is_all_english_letters({ :ok, value }) do
+    case Regex.match?(~r/^[a-zA-Z]+$/, value) do
+      true -> { :ok, value }
+      false -> { :error, "value must contain only English alphabetic characters" }
+    end    
+  end
+
+  defp is_all_english_letters({ :error, message }) do
+    { :error, message }
+  end
+
+  @doc """
+  Checks if value is within list
+  """
+  def value_in_list(value, list) do
+    IO.inspect list
+    case value in list do
+      true -> { :ok, value }
+      false -> { :error, "value is not in the list" }
+    end
+  end
 end
