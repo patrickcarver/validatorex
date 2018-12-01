@@ -10,7 +10,7 @@ by adding `validatorex` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:validatorex, "~> 0.1.0"}
+    {:validatorex, "~> 0.3.0"}
   ]
 end
 ```
