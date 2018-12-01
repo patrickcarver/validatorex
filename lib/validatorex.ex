@@ -31,6 +31,20 @@ defmodule Validatorex do
   end
 
   @doc """
+  Checks if string value does not exceed specified length
+  """
+  def is_less_than_length(value, limit) do
+    case String.length(value) <= limit do
+      true -> { :ok, value }
+      false -> { :error, "value length exceeds limit" }
+    end
+  end
+
+  def is_less_than_length({ :error, message }) do
+    { :error, message }
+  end
+
+  @doc """
   Checks if value is within list
   """
   def value_in_list(value, list) do
